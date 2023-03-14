@@ -1,10 +1,12 @@
 
 import './App.css';
+import FilmSearch from "./components/films/FilmSearch";
 
 function App() {
   return (
-    <div>
-    </div>
+    <>
+      <FilmSearch/>
+    </>
   );
 }
 
