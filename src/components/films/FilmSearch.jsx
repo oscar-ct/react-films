@@ -1,6 +1,6 @@
 import {useContext, useState} from "react";
-import OMDbContext from "../context/OMDbContext";
-import {filmSearch} from "../context/OMDbActions";
+import OMDbContext from "../context/omdb/OMDbContext";
+import {filmSearch} from "../context/omdb/OMDbActions";
 
 
 const FilmSearch = () => {

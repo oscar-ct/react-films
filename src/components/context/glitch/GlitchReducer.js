@@ -1,15 +1,15 @@
 
-function omdbReducer (state, action) {
+function glitchReducer (state, action) {
     switch (action.type) {
         case "SET_LOADING":
             return {
                 ...state,
                 isLoading: false,
             }
-        case "GET_FILMS":
+        case "GET_GLITCH_FILMS":
             return {
                 ...state,
-                films: action.payload,
+                glitchFilms: action.payload,
                 isLoading: false,
             }
         default:
@@ -18,4 +18,4 @@ function omdbReducer (state, action) {
     }
 }
 
-export default omdbReducer;
+export default glitchReducer;

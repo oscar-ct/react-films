@@ -1,24 +1,27 @@
 import './App.css';
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
-import {OMDbProvider} from "./components/context/OMDbContext";
+import {OMDbProvider} from "./components/context/omdb/OMDbContext";
 import Home from "./components/pages/Home";
 import Navbar from "./components/layout/Navbar";
+import {GlitchProvider} from "./components/context/glitch/GlitchContext";
 
 function App() {
     return (
         <>
-            <OMDbProvider>
-                <Router>
-                    <Navbar/>
-                    <main className="container mx-auto px-3 pb-12 bg-black">
-                        <div className="flex flex-col justify-between h-screen bg-slate-700">
-                            <Routes>
-                                <Route path="/" element={<Home/>}/>
-                            </Routes>
-                        </div>
-                    </main>
-                </Router>
-            </OMDbProvider>
+            <GlitchProvider>
+                <OMDbProvider>
+                    <Router>
+                        <Navbar/>
+                        <main className="container mx-auto px-3 pb-12 bg-black">
+                            <div className="flex flex-col justify-between h-screen bg-slate-700">
+                                <Routes>
+                                    <Route path="/" element={<Home/>}/>
+                                </Routes>
+                            </div>
+                        </main>
+                    </Router>
+                </OMDbProvider>
+            </GlitchProvider>
         </>
     );
 }
