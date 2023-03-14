@@ -1,43 +1,48 @@
-import { filmSearch } from "../context/OMDbActions";
-import {useEffect, useState} from "react";
+import {useContext, useState} from "react";
+import OMDbContext from "../context/OMDbContext";
+import {filmSearch} from "../context/OMDbActions";
 
 
 const FilmSearch = () => {
 
-    const {text, setText} = useState();
-    const fetchFilms =  filmSearch("tron")
+    const [text, setText] = useState("");
+    const { dispatch } = useContext(OMDbContext);
 
-    const handleSubmit = () => {
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        dispatch({
+            type: "SET_LOADING"
+        });
+        const data = await filmSearch(text);
+        setText("");
+        dispatch({
+            type: "GET_USERS",
+            payload: data,
+        });
 
     }
 
-    const handleChange = () => {
-
+    const handleChange = (e) => {
+        setText(e.target.value)
     }
 
     return (
-        <div className="grid grid-cols-1 xl:grids-cols-2 lg:grid-cols-2 md:grid-cols-2 mb-8 gap-8">
+        <form onSubmit={handleSubmit} className="flex">
             <div>
-                <form onSubmit={handleSubmit}>
-                    <div className="form-control">
-                        <div className="relative">
-                            <input
-                                className="w-full pr-40 bg-gray-500 input input-lg text-white"
-                                placeholder="Search"
-                                value={text}
-                                onChange={handleChange}
-                            />
-                            <button className="absolute top-0 right-0 rounded-l-none w-36 btn btn-lg">
-                                Go
-                            </button>
-                        </div>
-                    </div>
-
-                </form>
+                <input
+                    type="text"
+                    placeholder="Search"
+                    className="input input-bordered bg-black text-white"
+                    value={text}
+                    onChange={handleChange}
+                />
             </div>
-            {/* CLEAR button */}
+            <button className="btn btn-ghost btn-circle">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+            </button>
+        </form>
 
-        </div>
+
     );
 };
 

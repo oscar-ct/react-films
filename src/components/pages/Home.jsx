@@ -3,7 +3,9 @@ import FilmSearch from "../films/FilmSearch";
 
 const Home = () => {
     return (
-        <FilmSearch/>
+       <div>
+           Home
+       </div>
     );
 };
 
