@@ -5,6 +5,7 @@ import Home from "./components/pages/Home";
 import Navbar from "./components/layout/Navbar";
 import {GlitchProvider} from "./components/context/glitch/GlitchContext";
 
+
 function App() {
     return (
         <>
@@ -13,11 +14,11 @@ function App() {
                     <Router>
                         <Navbar/>
                         <main className="container mx-auto px-3 pb-12 bg-black">
-                            <div className="flex flex-col justify-between h-screen bg-slate-700">
+                            {/*<div className="flex flex-col justify-between h-screen bg-slate-700">*/}
                                 <Routes>
                                     <Route path="/" element={<Home/>}/>
                                 </Routes>
-                            </div>
+                            {/*</div>*/}
                         </main>
                     </Router>
                 </OMDbProvider>

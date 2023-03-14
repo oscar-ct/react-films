@@ -6,5 +6,5 @@ export const getGlitchFilms = async () => {
     const response = await fetch(GLITCH_URL);
     const data = await response.json();
     console.log(data);
-    return data;
+    return data.reverse();
 }
