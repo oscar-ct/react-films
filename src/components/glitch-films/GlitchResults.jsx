@@ -3,13 +3,11 @@ import glitchContext from "../context/glitch/GlitchContext";
 import { getGlitchFilms } from "../context/glitch/GlitchActions";
 import Spinner from "../layout/Spinner";
 import GlitchItem from "./GlitchItem";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
-
 
 
 
@@ -65,18 +63,46 @@ const GlitchResults = () => {
 
 
         if (!isLoading) {
+            const watchlist = glitchFilms.filter(function(film) {
+                return film.WatchList;
+            });
+            const favorites = glitchFilms.filter(function(film) {
+                return film.Favorite;
+            });
             return (
-                <AnimatePresence>
-                    <Slider {...settings}>
-                        {glitchFilms.map(function(film) {
-                            return (
-                                <motion.div key={film.id} initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}}>
-                                    <GlitchItem key={film.id} film={film}/>
-                                </motion.div>
-                            )
-                        })}
-                    </Slider>
-                </AnimatePresence>
+                <>
+                    <div>
+                        <div className="mt-6 mb-1">
+                            <h1 className="text-2xl text-white">WatchList</h1>
+                        </div>
+                        <Slider {...settings}>
+                            {watchlist.map(function(film) {
+                                return (
+                                    <motion.div key={film.id} initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}}>
+                                        <GlitchItem key={film.id} film={film}/>
+                                    </motion.div>
+                                )
+                            })}
+                        </Slider>
+                    </div>
+
+
+
+                     <div>
+                        <div className="mt-6 mb-1">
+                            <h1 className="text-2xl text-white">Favorites</h1>
+                        </div>
+                        <Slider {...settings}>
+                            {favorites.map(function(film) {
+                                return (
+                                    <motion.div key={film.id} initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}}>
+                                        <GlitchItem key={film.id} film={film}/>
+                                    </motion.div>
+                                )
+                            })}
+                        </Slider>
+                    </div>
+                </>
             );
 
         } else {

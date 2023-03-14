@@ -12,6 +12,11 @@ function glitchReducer (state, action) {
                 glitchFilms: action.payload,
                 isLoading: false,
             }
+        case "OPEN_GLITCH_FILM":
+            return {
+                ...state,
+                modalId: action.payload,
+            }
         default:
             return state;
 

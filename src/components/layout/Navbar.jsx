@@ -5,7 +5,7 @@ import FilmSearch from "../omdb-films/FilmSearch";
 
 const Navbar = ( { title } ) => {
     return (
-            <div className="navbar bg-black text-neutral-content py-3">
+            <div className="navbar bg-black text-neutral-content pb-3 pt-4">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost btn-circle">
@@ -25,8 +25,9 @@ const Navbar = ( { title } ) => {
                     </div>
                 </div>
                 <div className="navbar-center flex">
-                    <a className="btn btn-ghost normal-case text-xl">{title}
-                    </a>
+                    <button className="btn btn-ghost normal-case text-3xl">
+                        <Link to="/">{title}</Link>
+                    </button>
                 </div>
                 <div className="navbar-end">
 
