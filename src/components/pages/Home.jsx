@@ -1,10 +1,9 @@
+import FilmSearch from "../films/FilmSearch";
 
 
 const Home = () => {
     return (
-        <div>
-
-        </div>
+        <FilmSearch/>
     );
 };
 

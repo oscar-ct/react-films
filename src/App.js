@@ -1,13 +1,20 @@
-
 import './App.css';
-import FilmSearch from "./components/films/FilmSearch";
+import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
+import {OMDbProvider} from "./components/context/OMDbContext";
+import Home from "./components/pages/Home";
 
 function App() {
-  return (
-    <>
-      <FilmSearch/>
-    </>
-  );
+    return (
+        <>
+            <OMDbProvider>
+                <Router>
+                    <Routes>
+                        <Route path="/" element={<Home/>}/>
+                    </Routes>
+                </Router>
+            </OMDbProvider>
+        </>
+    );
 }
 
 export default App;

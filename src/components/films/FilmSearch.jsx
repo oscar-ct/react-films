@@ -1,12 +1,9 @@
-import { filmSearch } from "../context/OMDBActions";
+import { filmSearch } from "../context/OMDbActions";
 import {useEffect} from "react";
 
 
 const FilmSearch = () => {
 
-    useEffect(function () {
-
-    }, []);
 
     const fetchFilms =  filmSearch("tron")
 
