@@ -1,11 +1,9 @@
-import FilmSearch from "../films/FilmSearch";
+import GlitchResults from "../glitch-films/GlitchResults";
 
 
 const Home = () => {
     return (
-       <div>
-           Home
-       </div>
+       <GlitchResults/>
     );
 };
 

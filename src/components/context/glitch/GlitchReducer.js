@@ -4,7 +4,7 @@ function glitchReducer (state, action) {
         case "SET_LOADING":
             return {
                 ...state,
-                isLoading: false,
+                isLoading: true,
             }
         case "GET_GLITCH_FILMS":
             return {

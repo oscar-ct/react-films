@@ -1,6 +1,6 @@
 import {Link} from "react-router-dom";
 import PropTypes from "prop-types";
-import FilmSearch from "../films/FilmSearch";
+import FilmSearch from "../omdb-films/FilmSearch";
 
 
 const Navbar = ( { title } ) => {
