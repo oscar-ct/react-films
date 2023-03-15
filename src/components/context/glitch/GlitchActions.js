@@ -8,3 +8,17 @@ export const getGlitchFilms = async () => {
     console.log(data);
     return data.reverse();
 }
+
+export const favoriteGlitchFilm = async (id, updItem) => {
+    const response = await fetch(`${GLITCH_URL}/${id}`, {
+        method: "PUT",
+        body: JSON.stringify(updItem),
+        headers: {
+            "Content-Type": "application/json"
+        },
+    });
+    const data = await response.json();
+    console.log(data);
+    return data;
+}
+

@@ -25,8 +25,8 @@ const Navbar = ( { title } ) => {
                     </div>
                 </div>
                 <div className="navbar-center flex">
-                    <button className="btn btn-ghost normal-case text-3xl">
-                        <Link to="/">{title}</Link>
+                    <button className="btn btn-ghost normal-case text-black sm:text-3xl sm:text-white font-light">
+                        <Link to="/" >{title}</Link>
                     </button>
                 </div>
                 <div className="navbar-end">

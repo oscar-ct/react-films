@@ -20,9 +20,9 @@ const GlitchItem = ({film: { Poster, id}}) => {
     return (
         <div onClick={handleClick}>
             <label htmlFor={`my-modal-${modalId}`}>
-                <motion.div whileHover={{ scale: 1.1 }}
+                <motion.div whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.9 }}>
-                    <img src={Poster} alt="profile" className="h-96 w-64 mx-2 my-2 cursor-pointer"/>
+                    <img src={Poster} alt="profile" className="h-96 w-64 mx-2 my-2 cursor-pointer rounded-md"/>
                 </motion.div>
             </label>
         </div>

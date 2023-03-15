@@ -73,7 +73,7 @@ const GlitchResults = () => {
                 <>
                     <div>
                         <div className="mt-6 mb-1">
-                            <h1 className="text-2xl text-white">WatchList</h1>
+                            <h1 className="text-2xl text-white">WatchList ({watchlist.length})</h1>
                         </div>
                         <Slider {...settings}>
                             {watchlist.map(function(film) {
@@ -90,7 +90,7 @@ const GlitchResults = () => {
 
                      <div>
                         <div className="mt-6 mb-1">
-                            <h1 className="text-2xl text-white">Favorites</h1>
+                            <h1 className="text-2xl text-white">Favorites ({favorites.length})</h1>
                         </div>
                         <Slider {...settings}>
                             {favorites.map(function(film) {
@@ -105,8 +105,9 @@ const GlitchResults = () => {
                 </>
             );
 
-        } else {
-            return <Spinner/>
+        }
+        else  {
+            return <Spinner width={150}/>
         }
 
 

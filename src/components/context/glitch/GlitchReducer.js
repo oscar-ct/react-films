@@ -6,11 +6,17 @@ function glitchReducer (state, action) {
                 ...state,
                 isLoading: true,
             }
+        case "SET_UPDATING":
+            return {
+                ...state,
+                isUpdating: true,
+            }
         case "GET_GLITCH_FILMS":
             return {
                 ...state,
                 glitchFilms: action.payload,
                 isLoading: false,
+                isUpdating: false,
             }
         case "OPEN_GLITCH_FILM":
             return {
