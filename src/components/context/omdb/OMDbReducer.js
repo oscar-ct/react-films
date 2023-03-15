@@ -4,18 +4,12 @@ function omdbReducer (state, action) {
         case "SET_LOADING":
             return {
                 ...state,
-                isLoading: false,
+                isLoading: true,
             }
         case "GET_FILMS":
             return {
                 ...state,
                 films: action.payload,
-                isLoading: false,
-            }
-        case "GET_GLITCH_FILMS":
-            return {
-                ...state,
-                glitchFilms: action.payload,
                 isLoading: false,
             }
         default:

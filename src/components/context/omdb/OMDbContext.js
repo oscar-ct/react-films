@@ -10,7 +10,7 @@ export const OMDbProvider = ( {children} ) => {
 
     const initialState = {
         films: [],
-        glitchFilms: [],
+        // glitchFilms: [],
         isLoading: false,
     }
 
@@ -20,7 +20,7 @@ export const OMDbProvider = ( {children} ) => {
         value={{
             dispatch,
             films: state.films,
-            glitchFilms: state.glitchFilms,
+            // glitchFilms: state.glitchFilms,
             isLoading: state.isLoading,
         }}>
         {children}

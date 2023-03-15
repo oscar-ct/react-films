@@ -10,7 +10,6 @@ export const filmSearch = async (text) => {
     });
     const response = await fetch(`https://omdbapi.com/?${params}`);
     const data = await response.json();
-    console.log(data);
     return data;
 }
 
