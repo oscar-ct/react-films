@@ -29,10 +29,9 @@ const SearchResults = () => {
         if (films.length === 0) {
             runSearchFromParams(params.text)
         }
-    }, [dispatch, films, params.text])
+    }, [dispatch, films, params.text]);
 
 
-    console.log(films)
     if (!isLoading) {
         return (
             <div>

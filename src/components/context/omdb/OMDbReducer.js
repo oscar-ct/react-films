@@ -12,6 +12,12 @@ function omdbReducer (state, action) {
                 films: action.payload,
                 isLoading: false,
             }
+        case "GET_FILM":
+            return {
+                ...state,
+                film: action.payload,
+                isLoading: false,
+            }
         case "OPEN_OMDB_FILM":
             return {
                 ...state,

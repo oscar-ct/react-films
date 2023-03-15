@@ -13,6 +13,7 @@ export const OMDbProvider = ( {children} ) => {
         // glitchFilms: [],
         isLoading: false,
         modalId: null,
+        film: [],
     }
 
     const [state, dispatch] = useReducer(omdbReducer, initialState);
@@ -23,7 +24,8 @@ export const OMDbProvider = ( {children} ) => {
             films: state.films,
             // glitchFilms: state.glitchFilms,
             isLoading: state.isLoading,
-            modalId: state.modalId
+            modalId: state.modalId,
+            film: state.film,
         }}>
         {children}
     </OMDbContext.Provider>

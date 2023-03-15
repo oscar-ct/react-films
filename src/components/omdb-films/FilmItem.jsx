@@ -2,16 +2,22 @@ import {motion} from "framer-motion";
 import PropTypes from "prop-types";
 import {useContext} from "react";
 import OMDbContext from "../context/omdb/OMDbContext";
+import {filmData} from "../context/omdb/OMDbActions";
 
 
-const FilmItem = ( {film: { Poster, imdbID }} ) => {
+const FilmItem = ( {film: { Poster, imdbID, Title }} ) => {
 
     const { dispatch, modalId } = useContext(OMDbContext);
 
-    const handleClick = () => {
+    const handleClick = async () => {
         dispatch({
             type: "OPEN_OMDB_FILM",
             payload: imdbID
+        })
+        const data = await filmData(`${imdbID}`);
+        dispatch({
+            type: "GET_FILM",
+            payload: data,
         })
 
     }

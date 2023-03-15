@@ -4,7 +4,7 @@
 // import OMDbContext from "../../context/omdb/OMDbContext";
 
 
-const Modal = ( { modalId, films, isLoading, dispatch } ) => {
+const Modal = ( { modalId, films, film, isLoading, dispatch } ) => {
 
     if (!isLoading && modalId != null) {
 
@@ -12,11 +12,13 @@ const Modal = ( { modalId, films, isLoading, dispatch } ) => {
             return film.imdbID === modalId;
         });
 
-        console.log(modalId)
-        console.log(modalFilm)
-        console.log(films)
+        // console.log(modalId)
+        // console.log(modalFilm)
+        // console.log(films)
+        // console.log(film)
 
-        const { Title, Plot, Rating, Year, Genre, Director } = modalFilm[0];
+        // const { Title, Plot, Rating, Year, Genre, Director } = modalFilm[0];
+        const { Title, Plot, Rating, Year, Genre, Director } = film;
 
         return (
             <div>
