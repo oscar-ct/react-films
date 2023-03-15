@@ -4,7 +4,7 @@ import {OMDbProvider} from "./components/context/omdb/OMDbContext";
 import Home from "./components/pages/Home";
 import Navbar from "./components/layout/Navbar";
 import {GlitchProvider} from "./components/context/glitch/GlitchContext";
-import SearchResults from "./components/pages/SearchResults";
+import SearchPage from "./components/pages/SearchPage";
 
 
 function App() {
@@ -18,7 +18,7 @@ function App() {
                             {/*<div className="flex flex-col justify-between h-screen bg-slate-700">*/}
                                 <Routes>
                                     <Route path="/" element={<Home/>}/>
-                                    <Route path="/search/:text" element={<SearchResults/>}/>
+                                    <Route path="/search/:text" element={<SearchPage/>}/>
                                 </Routes>
                             {/*</div>*/}
                         </main>

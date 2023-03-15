@@ -2,7 +2,7 @@ import {useParams} from "react-router-dom";
 import {useContext, useEffect} from "react";
 import OMDbContext from "../context/omdb/OMDbContext";
 import {filmSearch} from "../context/omdb/OMDbActions";
-import {AnimatePresence, motion} from "framer-motion";
+import { motion} from "framer-motion";
 import FilmItem from "../omdb-films/FilmItem";
 
 
@@ -39,7 +39,7 @@ const SearchResults = () => {
                 <div className="mt-6 mb-1">
                     <h1 className="text-2xl text-white">Search Results({films.length})</h1>
                 </div>
-                <div className="flex flex-row">
+                <div className="flex flex-wrap justify-center">
                     {films.map(function(film) {
                         return (
                             <motion.div key={film.imdbID} initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}}>

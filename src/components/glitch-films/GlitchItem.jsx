@@ -5,14 +5,14 @@ import glitchContext from "../context/glitch/GlitchContext";
 
 
 
-const GlitchItem = ({film: { Poster, id}}) => {
+const GlitchItem = ({film: { Poster, imdbID}}) => {
 
     const { dispatch, modalId } = useContext(glitchContext);
 
     const handleClick = () => {
         dispatch({
             type: "OPEN_GLITCH_FILM",
-            payload: id
+            payload: imdbID
         })
 
     }

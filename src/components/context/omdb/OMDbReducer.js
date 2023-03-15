@@ -12,6 +12,11 @@ function omdbReducer (state, action) {
                 films: action.payload,
                 isLoading: false,
             }
+        case "OPEN_OMDB_FILM":
+            return {
+                ...state,
+                modalId: action.payload,
+            }
         default:
             return state;
 

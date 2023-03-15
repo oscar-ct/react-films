@@ -1,43 +1,22 @@
-import {useContext} from "react";
-import glitchContext from "../context/glitch/GlitchContext";
-import {favoriteGlitchFilm} from "../context/glitch/GlitchActions";
-import Spinner from "../layout/Spinner";
+// import Spinner from "../Spinner";
+// import {useContext} from "@types/react";
+// import glitchContext from "../../context/glitch/GlitchContext";
+// import OMDbContext from "../../context/omdb/OMDbContext";
 
 
-const GlitchItemModal = () => {
-
-    const { modalId, glitchFilms, isLoading, dispatch, isUpdating } = useContext(glitchContext);
+const Modal = ( { modalId, films, isLoading, dispatch } ) => {
 
     if (!isLoading && modalId != null) {
 
-        const modalFilm = glitchFilms.filter(function (film) {
+        const modalFilm = films.filter(function (film) {
             return film.imdbID === modalId;
         });
-        const { Title, Plot, Rating, Year, Genre, Director, Favorite, WatchList } = modalFilm[0];
 
+        console.log(modalId)
+        console.log(modalFilm)
+        console.log(films)
 
-
-        const handleFavoriteAndWatchlist = async (favorite, watchlist) => {
-            if (typeof favorite === "boolean" && typeof watchlist === "boolean") {
-                dispatch({
-                    type: "SET_UPDATING"
-                })
-                const new_obj = {...modalFilm[0], Favorite: favorite, WatchList: watchlist}
-                const data = await favoriteGlitchFilm(modalId, new_obj);
-                const new_state = glitchFilms.map(function (film) {
-                    if (film.id === modalId) {
-                        return {...film, ...data}
-                    } else {
-                        return film
-                    }
-                });
-                dispatch({
-                    type: "GET_GLITCH_FILMS",
-                    payload: new_state
-                });
-            }
-        }
-
+        const { Title, Plot, Rating, Year, Genre, Director } = modalFilm[0];
 
         return (
             <div>
@@ -48,10 +27,10 @@ const GlitchItemModal = () => {
                         <div className="flex justify-between">
                             <h3 className="font-bold text-3xl pb-5">{Title}</h3>
 
-                            <label className="swap swap-active text-5xl">
-                                <input type="checkbox" />
-                                {Favorite ? <div className="swap-on">❤️</div> : <div className="swap-on">🎬</div>}
-                            </label>
+                            {/*<label className="swap swap-active text-5xl">*/}
+                            {/*    <input type="checkbox" />*/}
+                            {/*    {Favorite ? <div className="swap-on">❤️</div> : <div className="swap-on">🎬</div>}*/}
+                            {/*</label>*/}
                         </div>
 
                         <p className="py-4 text-xl">{Plot}</p>
@@ -82,34 +61,34 @@ const GlitchItemModal = () => {
                         </div>
 
                         <div className="flex justify-end">
-                            {isUpdating &&
-                            <div className="flex items-end">
-                                <Spinner width={40}/>
-                            </div>}
+                            {/*{isUpdating &&*/}
+                            {/*    <div className="flex items-end">*/}
+                            {/*        <Spinner width={40}/>*/}
+                            {/*    </div>}*/}
 
 
                             <div className="flex justify-end items-end">
-                                {!Favorite && WatchList?
-                                    <button onClick={()=> {
-                                        handleFavoriteAndWatchlist(true, false);
-                                    }
-                                    } className="btn btn-secondary">
-                                    Favorite
-                                    </button>
-                                    :
-                                    <button onClick={()=> {
-                                        handleFavoriteAndWatchlist(false, true);
-                                    }
-                                    } className="btn btn-primary  ml-4">
-                                    Add To WatchList
-                                    </button>
-                                }
+                                {/*{!Favorite && WatchList?*/}
+                                {/*    <button onClick={()=> {*/}
+                                {/*        handleFavoriteAndWatchlist(true, false);*/}
+                                {/*    }*/}
+                                {/*    } className="btn btn-secondary">*/}
+                                {/*        Favorite*/}
+                                {/*    </button>*/}
+                                {/*    :*/}
+                                {/*    <button onClick={()=> {*/}
+                                {/*        handleFavoriteAndWatchlist(false, true);*/}
+                                {/*    }*/}
+                                {/*    } className="btn btn-primary  ml-4">*/}
+                                {/*        Add To WatchList*/}
+                                {/*    </button>*/}
+                                {/*}*/}
 
 
                                 <div className="modal-action ml-4">
                                     <label htmlFor={`my-modal-${modalId}`} className="btn">Close</label>
                                 </div>
-                             </div>
+                            </div>
 
                         </div>
 
@@ -121,6 +100,6 @@ const GlitchItemModal = () => {
         );
     }
 
-}
+};
 
-export default GlitchItemModal;
+export default Modal;
