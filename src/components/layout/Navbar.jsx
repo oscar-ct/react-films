@@ -1,7 +1,7 @@
 import {Link} from "react-router-dom";
 import FilmSearch from "../omdb-films/FilmSearch";
 import {motion} from "framer-motion";
-import {FaHome, FaAddressCard} from "react-icons/fa";
+// import {FaHome, FaAddressCard} from "react-icons/fa";
 
 
 const Navbar = () => {
@@ -15,10 +15,29 @@ const Navbar = () => {
                         </label>
                         <ul tabIndex={0} className="menu menu-compact dropdown-content p-2 shadow bg-black rounded-box w-52">
                             <li>
-                                <Link to="/"><FaHome/>Home</Link>
+                                <Link to="/">
+                                    {/*<FaHome/>*/}
+                                    <svg
+                                        viewBox="0 0 1024 1024"
+                                        fill="currentColor"
+                                        height="20"
+                                        width="20">
+                                        <path d="M946.5 505L560.1 118.8l-25.9-25.9a31.5 31.5 0 00-44.4 0L77.5 505a63.9 63.9 0 00-18.8 46c.4 35.2 29.7 63.3 64.9 63.3h42.5V940h691.8V614.3h43.4c17.1 0 33.2-6.7 45.3-18.8a63.6 63.6 0 0018.7-45.3c0-17-6.7-33.1-18.8-45.2zM568 868H456V664h112v204zm217.9-325.7V868H632V640c0-22.1-17.9-40-40-40H432c-22.1 0-40 17.9-40 40v228H238.1V542.3h-96l370-369.7 23.1 23.1L882 542.3h-96.1z" />
+                                    </svg>Home
+                                </Link>
                             </li>
                             <li>
-                                <Link to="/"><FaAddressCard/>Contact</Link>
+                                <Link to="/">
+                                    {/*<FaAddressCard/>*/}
+                                    <svg
+                                        viewBox="0 0 1024 1024"
+                                        fill="currentColor"
+                                        height="22"
+                                        width="22">
+                                        <path d="M594.3 601.5a111.8 111.8 0 0029.1-75.5c0-61.9-49.9-112-111.4-112s-111.4 50.1-111.4 112c0 29.1 11 55.5 29.1 75.5a158.09 158.09 0 00-74.6 126.1 8 8 0 008 8.4H407c4.2 0 7.6-3.3 7.9-7.5 3.8-50.6 46-90.5 97.2-90.5s93.4 40 97.2 90.5c.3 4.2 3.7 7.5 7.9 7.5H661a8 8 0 008-8.4c-2.8-53.3-32-99.7-74.7-126.1zM512 578c-28.5 0-51.7-23.3-51.7-52s23.2-52 51.7-52 51.7 23.3 51.7 52-23.2 52-51.7 52zm416-354H768v-56c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v56H548v-56c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v56H328v-56c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v56H96c-17.7 0-32 14.3-32 32v576c0 17.7 14.3 32 32 32h832c17.7 0 32-14.3 32-32V256c0-17.7-14.3-32-32-32zm-40 568H136V296h120v56c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-56h148v56c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-56h148v56c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-56h120v496z" />
+                                    </svg>
+                                    Contact
+                                </Link>
                             </li>
                         </ul>
                     </div>
@@ -28,7 +47,14 @@ const Navbar = () => {
                             <Link to="/">
                                 <div className="flex justify-center items-center ">
                                     <button className="btn btn-ghost btn-circle">
-                                        <FaAddressCard className="text-2xl"/>
+                                        {/*<FaAddressCard className="text-2xl"/>*/}
+                                        <svg
+                                            viewBox="0 0 1024 1024"
+                                            fill="currentColor"
+                                            height="28"
+                                            width="28">
+                                            <path d="M594.3 601.5a111.8 111.8 0 0029.1-75.5c0-61.9-49.9-112-111.4-112s-111.4 50.1-111.4 112c0 29.1 11 55.5 29.1 75.5a158.09 158.09 0 00-74.6 126.1 8 8 0 008 8.4H407c4.2 0 7.6-3.3 7.9-7.5 3.8-50.6 46-90.5 97.2-90.5s93.4 40 97.2 90.5c.3 4.2 3.7 7.5 7.9 7.5H661a8 8 0 008-8.4c-2.8-53.3-32-99.7-74.7-126.1zM512 578c-28.5 0-51.7-23.3-51.7-52s23.2-52 51.7-52 51.7 23.3 51.7 52-23.2 52-51.7 52zm416-354H768v-56c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v56H548v-56c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v56H328v-56c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v56H96c-17.7 0-32 14.3-32 32v576c0 17.7 14.3 32 32 32h832c17.7 0 32-14.3 32-32V256c0-17.7-14.3-32-32-32zm-40 568H136V296h120v56c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-56h148v56c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-56h148v56c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-56h120v496z" />
+                                        </svg>
                                     </button>
                                     <span className="text-md hover:font-bold">Contact</span>
                                 </div>
@@ -36,7 +62,15 @@ const Navbar = () => {
                             <Link to="/">
                                 <div className="flex justify-center items-center ml-4">
                                     <button className="btn btn-ghost btn-circle">
-                                        <FaHome className="text-2xl"/>
+                                        {/*<FaHome className="text-2xl"/>*/}
+                                        <svg
+                                            viewBox="0 0 1024 1024"
+                                            fill="currentColor"
+                                            height="24"
+                                            width="24"
+                                        >
+                                            <path d="M946.5 505L560.1 118.8l-25.9-25.9a31.5 31.5 0 00-44.4 0L77.5 505a63.9 63.9 0 00-18.8 46c.4 35.2 29.7 63.3 64.9 63.3h42.5V940h691.8V614.3h43.4c17.1 0 33.2-6.7 45.3-18.8a63.6 63.6 0 0018.7-45.3c0-17-6.7-33.1-18.8-45.2zM568 868H456V664h112v204zm217.9-325.7V868H632V640c0-22.1-17.9-40-40-40H432c-22.1 0-40 17.9-40 40v228H238.1V542.3h-96l370-369.7 23.1 23.1L882 542.3h-96.1z" />
+                                        </svg>
                                     </button>
                                     <span className="text-md hover:font-bold">Home</span>
                                 </div>
