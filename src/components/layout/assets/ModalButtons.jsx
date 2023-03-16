@@ -32,6 +32,9 @@ const ModalButtons = ( { modalIdObj, imdbID } ) => {
         // dispatch({
         //     type: "SET_LOADING"
         // });
+        dispatch({
+            type: "SET_UPDATING"
+        });
         await deleteGlitchFilm(id);
         let new_state = [];
         for (let i = 0; i < glitchFilms.length; i++) {
@@ -51,12 +54,18 @@ const ModalButtons = ( { modalIdObj, imdbID } ) => {
 
     const handleAdd = async (id, Favorite, Watchlist) => {
         if (typeof Favorite === "boolean" && typeof Watchlist === "boolean" && Favorite) {
+            dispatch({
+                type: "SET_UPDATING"
+            });
             const data = await addGlitchFilm(id, true, false);
             dispatch({
                 type: "GET_GLITCH_FILMS",
                 payload: [data, ...glitchFilms]
             });
         } else if (typeof Favorite === "boolean" && typeof Watchlist === "boolean" && Watchlist) {
+            dispatch({
+                type: "SET_UPDATING"
+            });
             const data = await addGlitchFilm(id, false, true);
             dispatch({
                 type: "GET_GLITCH_FILMS",

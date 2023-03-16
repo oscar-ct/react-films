@@ -1,6 +1,7 @@
 import {Link} from "react-router-dom";
 import PropTypes from "prop-types";
 import FilmSearch from "../omdb-films/FilmSearch";
+import {motion} from "framer-motion";
 
 
 
@@ -25,10 +26,19 @@ const Navbar = ( { title } ) => {
                         </ul>
                     </div>
                 </div>
-                <div className="navbar-center flex">
-                    <button className="btn btn-ghost normal-case text-black sm:text-3xl sm:text-white font-light">
-                        <Link to="/" >{title}</Link>
-                    </button>
+                <div className="navbar-center">
+                    <Link to="/">
+                        <button className="btn btn-ghost normal-case text-black sm:text-3xl sm:text-white font-light">
+                            <motion.div className="flex nav-logo" initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}}>
+                                <span className="px-2 pt-4">M</span>
+                                <img src="https://www.freeiconspng.com/uploads/movie-icon-11.png" width="70" alt="" />
+                                <span className="px-2 pt-4">V</span>
+                                <span className="px-2 pt-4">I</span>
+                                <span className="px-2 pt-4">E</span>
+                                <span className="px-2 pt-4">S</span>
+                                </motion.div>
+                        </button>
+                    </Link>
                 </div>
                 <div className="navbar-end">
 

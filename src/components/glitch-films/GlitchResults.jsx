@@ -1,13 +1,12 @@
 import { useContext, useEffect } from "react";
 import glitchContext from "../context/glitch/GlitchContext";
 import { getGlitchFilms } from "../context/glitch/GlitchActions";
-import Spinner from "../layout/Spinner";
 import GlitchItem from "./GlitchItem";
 import { motion } from "framer-motion";
-
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import LargeSpinner from "../layout/LargeSpinner";
 
 
 
@@ -107,7 +106,7 @@ const GlitchResults = () => {
 
         }
         else  {
-            return <Spinner width={150}/>
+            return <LargeSpinner/>
         }
 
 

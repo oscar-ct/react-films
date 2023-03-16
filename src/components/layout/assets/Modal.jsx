@@ -1,12 +1,12 @@
-// import Spinner from "../Spinner";
+import Spinner from "../Spinner";
 import ModalIcons from "./ModalIcons";
 import ModalButtons from "./ModalButtons";
 import glitchContext from "../../context/glitch/GlitchContext";
 import {useContext} from "react";
 
-const Modal = ( { modalId, film, isLoading, dispatch } ) => {
+const Modal = ( { modalId, film, isLoading } ) => {
 
-    const { glitchFilms } = useContext(glitchContext);
+    const { glitchFilms, isUpdating } = useContext(glitchContext);
 
     const modalFilmObj = glitchFilms.filter(function (glitchFilm) {
         return glitchFilm.imdbID === modalId;
@@ -51,10 +51,10 @@ const Modal = ( { modalId, film, isLoading, dispatch } ) => {
                         </div>
 
                         <div className="flex justify-end">
-                            {/*{isUpdating &&*/}
-                            {/*    <div className="flex items-end">*/}
-                            {/*        <Spinner width={40}/>*/}
-                            {/*    </div>}*/}
+                            {isUpdating &&
+                                <div className="flex items-end">
+                                    <Spinner width={40}/>
+                                </div>}
 
                             <div className="flex justify-end items-end">
 {/*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/}

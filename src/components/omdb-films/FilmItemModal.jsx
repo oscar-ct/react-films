@@ -6,12 +6,10 @@ import Modal from "../layout/assets/Modal";
 
 const FilmItemModal = () => {
 
-    const { modalId, film, isLoading, dispatch  } = useContext(OMDbContext);
+    const { modalId, film, isLoading } = useContext(OMDbContext);
 
     return (
-        <div>
-            <Modal modalId={modalId}  isLoading={isLoading} dispatch={dispatch} film={film}/>
-        </div>
+        <Modal modalId={modalId}  isLoading={isLoading}  film={film}/>
     );
 };
 
