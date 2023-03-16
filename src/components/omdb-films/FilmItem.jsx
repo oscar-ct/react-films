@@ -5,7 +5,7 @@ import OMDbContext from "../context/omdb/OMDbContext";
 import {filmData} from "../context/omdb/OMDbActions";
 
 
-const FilmItem = ( {film: { Poster, imdbID, Title }} ) => {
+const FilmItem = ( {film: { Poster, imdbID }} ) => {
 
     const { dispatch, modalId } = useContext(OMDbContext);
 

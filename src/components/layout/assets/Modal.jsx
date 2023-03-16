@@ -32,8 +32,8 @@ const Modal = ( { modalId, film, isLoading, dispatch } ) => {
                         <div className="flex justify-center">
                             <div className="stats stats-vertical lg:stats-horizontal shadow mt-6 bg-base-100/90">
                                 <div className="stat">
-                                    <div className="stat-title">Rating</div>
-                                    <div className="stat-value text-3xl font-bold">{Rating}</div>
+                                    <div className="stat-title">Rotten Tomatoes Rating</div>
+                                    <div className="stat-value text-3xl font-bold">{!film.hasOwnProperty("Ratings")  ? Rating : film.Ratings[0].Value}</div>
                                 </div>
                                 <div className="stat">
                                     <div className="stat-title">Year</div>

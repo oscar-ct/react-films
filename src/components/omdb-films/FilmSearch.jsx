@@ -1,7 +1,7 @@
 import {useContext, useState} from "react";
 import OMDbContext from "../context/omdb/OMDbContext";
 import {filmSearch} from "../context/omdb/OMDbActions";
-import {Link, useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 
 const FilmSearch = () => {
