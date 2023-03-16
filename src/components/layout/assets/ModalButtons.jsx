@@ -1,6 +1,7 @@
 import {useContext} from "react";
 import glitchContext from "../../context/glitch/GlitchContext";
-import {addGlitchFilm, deleteGlitchFilm, updateGlitchFilm} from "../../context/glitch/GlitchActions";
+import {addGlitchFilm, deleteGlitchFilm} from "../../context/glitch/GlitchActions";
+import  {FaPlus} from 'react-icons/fa'
 
 const ModalButtons = ( { modalIdObj, imdbID } ) => {
 
@@ -99,7 +100,7 @@ const ModalButtons = ( { modalIdObj, imdbID } ) => {
                 <button onClick={() => {
                     handleAdd(`${imdbID}`, false, true);
                 }} className="btn btn-primary ml-4">
-                    Add To Watchlist
+                    <FaPlus className="mr-1"/> Watchlist
                 </button>
             </div>
         )
