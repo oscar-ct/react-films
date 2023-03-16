@@ -15,7 +15,7 @@ const Modal = ( { modalId, film, isLoading, dispatch } ) => {
     if (!isLoading && modalId != null) {
 
         // This data is from glitch or omdb
-        const { Title, Plot, Rating, Year, Genre, Director } = film;
+        const { Title, Plot, Rating, Year, Genre, Director, imdbID} = film;
 
         return (
             <div>
@@ -58,7 +58,7 @@ const Modal = ( { modalId, film, isLoading, dispatch } ) => {
 
                             <div className="flex justify-end items-end">
 {/*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/}
-                                <ModalButtons modalIdObj={modalFilmObj}/>
+                                <ModalButtons modalIdObj={modalFilmObj} imdbID={imdbID}/>
                                 <div className="modal-action ml-4">
                                     <label htmlFor={`my-modal-${modalId}`} className="btn">Close</label>
                                 </div>

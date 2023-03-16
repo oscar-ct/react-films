@@ -1,8 +1,8 @@
 import {useContext} from "react";
 import glitchContext from "../../context/glitch/GlitchContext";
-import {deleteGlitchFilm, updateGlitchFilm} from "../../context/glitch/GlitchActions";
+import {addGlitchFilm, deleteGlitchFilm, updateGlitchFilm} from "../../context/glitch/GlitchActions";
 
-const ModalButtons = ( { modalIdObj } ) => {
+const ModalButtons = ( { modalIdObj, imdbID } ) => {
 
     const { dispatch, glitchFilms } = useContext(glitchContext);
 
@@ -48,6 +48,24 @@ const ModalButtons = ( { modalIdObj } ) => {
         })
     }
 
+    const handleAdd = async (id, Favorite, Watchlist) => {
+        if (typeof Favorite === "boolean" && typeof Watchlist === "boolean" && Favorite) {
+            const data = await addGlitchFilm(id, true, false);
+            dispatch({
+                type: "GET_GLITCH_FILMS",
+                payload: [data, ...glitchFilms]
+            });
+        } else if (typeof Favorite === "boolean" && typeof Watchlist === "boolean" && Watchlist) {
+            const data = await addGlitchFilm(id, false, true);
+            dispatch({
+                type: "GET_GLITCH_FILMS",
+                payload: [data, ...glitchFilms]
+            });
+        }
+    }
+
+
+
     if (modalIdObj.length !== 0) {
         const { Favorite, WatchList, id } = modalIdObj[0];
 
@@ -55,7 +73,6 @@ const ModalButtons = ( { modalIdObj } ) => {
             return (
                 <button onClick={()=> {
                     handleDelete(id);
-                    // handleFavoriteAndWatchlist(true, false);
                 }
                 } className="btn btn-primary">
                     Remove From Watchlist
@@ -64,22 +81,24 @@ const ModalButtons = ( { modalIdObj } ) => {
         } else if (Favorite && !WatchList) {
             return (
                 <button onClick={()=> {
-                    // handleFavoriteAndWatchlist(false, true);
                     handleDelete(id);
                 }
                 } className="btn btn-primary ml-4">
                     UnFavorite
-                    {/*Add To WatchList*/}
                 </button>
             )
         }
     } else {
         return (
             <div>
-                <button className="btn btn-secondary">
+                <button onClick={() => {
+                    handleAdd(`${imdbID}`, true, false);
+                }} className="btn btn-secondary">
                     Favorite
                 </button>
-                <button className="btn btn-primary ml-4">
+                <button onClick={() => {
+                    handleAdd(`${imdbID}`, false, true);
+                }} className="btn btn-primary ml-4">
                     Add To Watchlist
                 </button>
             </div>

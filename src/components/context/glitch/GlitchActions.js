@@ -1,3 +1,4 @@
+import {filmData} from "../omdb/OMDbActions";
 
 const GLITCH_URL = process.env.REACT_APP_GLITCH_URL
 
@@ -29,7 +30,31 @@ export const deleteGlitchFilm = async (id) => {
             "Content-Type": "application/json"
         },
     });
-
-
 }
 
+export const addGlitchFilm = async (id, Favorite, WatchList) => {
+    const data = await filmData(id);
+    const { Title, Poster, Year, Genre, Director, Plot, Actors, imdbID } = data;
+    const new_object = {
+        Title,
+        Rating: data.Ratings[0].Value,
+        Poster,
+        Year,
+        Genre,
+        Director,
+        Plot,
+        Actors,
+        imdbID,
+        Favorite: Favorite,
+        WatchList: WatchList
+    }
+    const response = await fetch(`${GLITCH_URL}`, {
+        method: "POST",
+        body: JSON.stringify(new_object),
+        headers: {
+            "Content-Type": "application/json"
+        },
+    });
+    const data2 = await response.json();
+    return data2;
+}
