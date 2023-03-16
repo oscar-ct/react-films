@@ -36,7 +36,7 @@ const FilmSearch = () => {
             <div>
                 <input
                     type="text"
-                    placeholder="Search"
+                    placeholder="Search Titles"
                     className="input input-bordered bg-black text-white"
                     value={text}
                     onChange={handleChange}
