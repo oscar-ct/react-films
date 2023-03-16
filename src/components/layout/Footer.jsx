@@ -3,7 +3,7 @@
 const Footer = () => {
     return (
         <div>
-            <footer className="fixed bottom-0 footer footer-center p-5 bg-neutral text-base-content rounded">
+            <footer className="footer footer-center p-5 bg-neutral text-base-content rounded">
                 <div className="grid grid-flow-col gap-4 text-white">
                     <a href="https://github.com/oscar-ct/react-films" className="link link-hover">Repository</a>
                     <a href="https://www.omdbapi.com/" className="link link-hover">OMBd API</a>

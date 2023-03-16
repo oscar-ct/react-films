@@ -15,7 +15,7 @@ function App() {
                 <OMDbProvider>
                     <Router>
                         <Navbar/>
-                        <main className="mx-5 px-3 pb-12 bg-black">
+                        <main className="mx-5 px-3 pb-16 bg-black">
                             {/*<div className="flex flex-col justify-between h-screen bg-slate-700">*/}
                                 <Routes>
                                     <Route path="/" element={<Home/>}/>

@@ -4,6 +4,7 @@ import OMDbContext from "../context/omdb/OMDbContext";
 import {filmSearch} from "../context/omdb/OMDbActions";
 import { motion} from "framer-motion";
 import FilmItem from "../omdb-films/FilmItem";
+import FilmNoResults from "../omdb-films/FilmNoResults";
 
 
 
@@ -16,27 +17,35 @@ const SearchResults = () => {
 
 
     useEffect(function (){
-        const runSearchFromParams = async () => {
+        const runSearchFromParams = async (text) => {
             dispatch({
                 type: "SET_LOADING"
             });
-            const data = await filmSearch(params.text);
-            dispatch({
-                type: "GET_FILMS",
-                payload: data.Search,
-            });
+            const data = await filmSearch(text)
+            console.log(data.Response)
+            if (data.Response === "True") {
+                dispatch({
+                    type: "GET_FILMS",
+                    payload: data.Search,
+                });
+            } else {
+                dispatch({
+                    type: "GET_FILMS",
+                    payload: [],
+                });
+            }
         }
         if (films.length === 0) {
-            runSearchFromParams(params.text)
+            runSearchFromParams(params.text);
         }
     }, [dispatch, films, params.text]);
 
 
-    if (!isLoading) {
+    if (!isLoading && films.length !== 0) {
         return (
             <div>
-                <div className="mt-6 mb-1">
-                    <h1 className="text-2xl text-white">Search Results({films.length})</h1>
+                <div className="py-6">
+                    <div className="text-2xl text-white text-center">Search Results<span className="pl-2 font-bold">({films.length})</span></div>
                 </div>
                 <div className="flex flex-wrap justify-center">
                     {films.map(function(film) {
@@ -49,6 +58,10 @@ const SearchResults = () => {
                 </div>
             </div>
         );
+    } else {
+        return (
+           <FilmNoResults/>
+        )
     }
 };
 
