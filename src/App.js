@@ -5,6 +5,7 @@ import Home from "./components/pages/Home";
 import Navbar from "./components/layout/Navbar";
 import {GlitchProvider} from "./components/context/glitch/GlitchContext";
 import SearchPage from "./components/pages/SearchPage";
+import Footer from "./components/layout/Footer";
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
                                 </Routes>
                             {/*</div>*/}
                         </main>
+                        <Footer/>
                     </Router>
                 </OMDbProvider>
             </GlitchProvider>

@@ -19,8 +19,12 @@ code {
     monospace;
 }
 
-@media screen and (max-width: 45em) {
-  .nav-logo {
+.nav-logo {
+  transform: translateY(-12px);
+}
+
+@media screen and (max-width: 1023px) {
+  .nav-logo-wrapper {
     display: none;
   }
 }
