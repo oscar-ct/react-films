@@ -55,7 +55,7 @@ const About = () => {
             <div className="container mx-auto my-4 px-4 lg:px-20 xl:px-40 bg-black">
                 <div className="bg-base-100/90 mt-10 w-full p-8 my-4 md:px-12 lg:w-9/12 lg:pl-20 lg:pr-40 mr-auto rounded-2xl shadow-2xl">
                     <div className="flex">
-                        <h1 className="font-bold text-5xl whitespace-normal">Send Me A Message</h1>
+                        <h1 className="font-bold text-3xl md:text-5xl whitespace-normal">Send Me A Message</h1>
                     </div>
                     <div className="grid grid-cols-1 gap-5 md:grid-cols-2 mt-5">
                         <input
@@ -74,7 +74,7 @@ const About = () => {
                     <div className="my-1 w-1/2 lg:w-1/2 xl:w-1/4">
                         <button disabled={btnDisabled} className="uppercase text-sm font-bold tracking-wide btn bg-primary text-white p-3 rounded-lg w-full
                       focus:outline-none focus:shadow-outline" type="submit" form="email-form">
-                            Send Message
+                            Send
                         </button>
 
                     </div>

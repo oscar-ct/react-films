@@ -109,7 +109,7 @@ const ModalButtons = ( { modalIdObj, imdbID } ) => {
                 <button onClick={() => {
                     handleAdd(`${imdbID}`, false, true);
                 }} className="btn btn-primary ml-4">
-                    <FaPlus className="mr-1"/> Watchlist
+                    Watchlist <FaPlus className="ml-1"/>
                 </button>
             </div>
         )
