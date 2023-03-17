@@ -21,12 +21,19 @@ const FilmSearch = () => {
             type: "SET_LOADING"
         });
         const data = await filmSearch(text)
+        console.log(data.Response)
         if (data.Response === "True") {
             dispatch({
                 type: "GET_FILMS",
                 payload: data.Search,
             });
+            dispatch({
+                type: "SET_SEARCH_FOUND",
+            });
         } else {
+            dispatch({
+                type: "SET_NO_SEARCH_FOUND",
+            });
             dispatch({
                 type: "GET_FILMS",
                 payload: [],

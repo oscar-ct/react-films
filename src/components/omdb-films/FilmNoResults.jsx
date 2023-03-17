@@ -7,13 +7,13 @@ const FilmNoResults = () => {
     const params = useParams();
 
     return (
-        <div className="no-results text-white">
+        <div className="no-results text-white w-full flex justify-center items-start">
             <div className="text-center hero-content">
                 <div className="max-w-lg">
                     <p className="text-5xl my-12">
                         Sorry! No Results Found For "{params.text}"
                     </p>
-                    <Link  to="/" className="btn btn-ghost btn-md text-lg">
+                    <Link  to="/" className="btn btn-primary btn-md text-lg">
                         <svg
                             viewBox="0 0 1024 1024"
                             fill="currentColor"

@@ -7,7 +7,7 @@ import {filmData} from "../context/omdb/OMDbActions";
 
 const FilmItem = ( {film: { Poster, imdbID }} ) => {
 
-    const { dispatch, modalId } = useContext(OMDbContext);
+    const { dispatch } = useContext(OMDbContext);
 
     const handleClick = async () => {
         dispatch({
@@ -24,7 +24,7 @@ const FilmItem = ( {film: { Poster, imdbID }} ) => {
 
     return (
         <div onClick={handleClick}>
-            <label htmlFor={`my-modal-${modalId}`}>
+            <label htmlFor={`my-modal-${imdbID}`}>
                 <motion.div whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.9 }}>
                     <img src={Poster} alt="profile" className="h-96 w-64 mx-2 my-2 cursor-pointer rounded-md"/>

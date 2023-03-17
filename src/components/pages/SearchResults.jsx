@@ -5,16 +5,15 @@ import {filmSearch} from "../context/omdb/OMDbActions";
 import { motion} from "framer-motion";
 import FilmItem from "../omdb-films/FilmItem";
 import FilmNoResults from "../omdb-films/FilmNoResults";
-
-
+import LargeSpinner from "../layout/LargeSpinner";
 
 
 const SearchResults = () => {
 
-    const { isLoading, films, dispatch } = useContext(OMDbContext);
+    // const [noSearchFound, setNoSearchFound] = useState(true);
+
+    const { isLoading, films, dispatch, noSearchFound, } = useContext(OMDbContext);
     const params = useParams();
-
-
 
     useEffect(function (){
         const runSearchFromParams = async (text) => {
@@ -28,7 +27,14 @@ const SearchResults = () => {
                     type: "GET_FILMS",
                     payload: data.Search,
                 });
+                dispatch({
+                    type: "SET_SEARCH_FOUND",
+                });
             } else {
+                // setNoSearchFound(false);
+                dispatch({
+                    type: "SET_NO_SEARCH_FOUND",
+                });
                 dispatch({
                     type: "GET_FILMS",
                     payload: [],
@@ -38,10 +44,10 @@ const SearchResults = () => {
         if (films.length === 0) {
             runSearchFromParams(params.text);
         }
-    }, [dispatch, films, params.text]);
+    }, [dispatch, films, params.text, noSearchFound]);
 
 
-    if (!isLoading && films.length !== 0) {
+    if (!isLoading && films.length !== 0 && noSearchFound) {
         return (
             <div>
                 <div className="py-6">
@@ -58,9 +64,13 @@ const SearchResults = () => {
                 </div>
             </div>
         );
-    } else {
+    } else if (!noSearchFound) {
         return (
            <FilmNoResults/>
+        )
+    } else if (isLoading) {
+        return (
+            <LargeSpinner/>
         )
     }
 };

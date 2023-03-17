@@ -1,6 +1,16 @@
 
 function omdbReducer (state, action) {
     switch (action.type) {
+        case "SET_NO_SEARCH_FOUND":
+            return {
+                ...state,
+                noSearchFound: false,
+            }
+        case "SET_SEARCH_FOUND":
+            return {
+                ...state,
+                noSearchFound: true,
+            }
         case "SET_LOADING":
             return {
                 ...state,
