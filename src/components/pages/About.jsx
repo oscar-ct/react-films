@@ -12,6 +12,20 @@ const About = () => {
     const form = useRef();
 
     const [isAlerting, setIsAlerting] = useState(false);
+    const [btnDisabled, setBtnDisabled] = useState(true);
+    const [alertDisplay, setAlertDisplay] = useState(false);
+
+
+    const handleMessage = (e) => {
+        const msg = e.target.value
+        if (msg.trim().length >= 5) {
+            setBtnDisabled(false);
+            setAlertDisplay(false)
+        } else if (msg.trim() !== ""){
+            setBtnDisabled(true);
+            setAlertDisplay(true)
+        }
+    }
 
 
     const sendEmail = (e) => {
@@ -22,7 +36,8 @@ const About = () => {
                 document.getElementById("name").value = "";
                 document.getElementById("email").value = "";
                 document.getElementById("message").value = "";
-                setIsAlerting(true)
+                setIsAlerting(true);
+                setBtnDisabled(true);
                 setTimeout(function () {
                     setIsAlerting(false)
                 }, 2000)
@@ -44,17 +59,19 @@ const About = () => {
                     <div className="grid grid-cols-1 gap-5 md:grid-cols-2 mt-5">
                         <input
                             id="name" className="w-full bg-gray-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
-                            type="text" placeholder="First Name*" name="from_name" form="email-form"/>
+                            type="text" placeholder="Name" name="from_name" form="email-form"/>
                         <input
                             id="email" className="w-full bg-gray-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
-                            type="email" placeholder="Email*" form="email-form" name="email_id"/>
+                            type="email" placeholder="Email" form="email-form" name="email_id"/>
                     </div>
                     <div className="my-4">
                         <textarea id="message" name="message" form="email-form" placeholder="Message*"
-    className="w-full h-32 bg-gray-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"/>
+    className="w-full h-32 bg-gray-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline" onChange={handleMessage}/>
+                        {alertDisplay &&
+                        <div className="text-rose-500">Message must be at least 5 characters</div>}
                     </div>
                     <div className="my-2 w-1/2 lg:w-1/2 xl:w-1/4">
-                        <button className="uppercase text-sm font-bold tracking-wide btn bg-primary text-white p-3 rounded-lg w-full
+                        <button disabled={btnDisabled} className="uppercase text-sm font-bold tracking-wide btn bg-primary text-white p-3 rounded-lg w-full
                       focus:outline-none focus:shadow-outline" type="submit" form="email-form">
                             Send Message
                         </button>
