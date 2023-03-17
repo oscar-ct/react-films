@@ -44,7 +44,7 @@ const Navbar = () => {
                     <div className="hidden lg:flex">
                         {/*<ul className="menu menu-horizontal px-1">*/}
                         {/*    <li>*/}
-                            <Link to="/">
+                            <Link to="/about">
                                 <div className="flex justify-center items-center ">
                                     <button className="btn btn-ghost btn-circle">
                                         {/*<FaAddressCard className="text-2xl"/>*/}

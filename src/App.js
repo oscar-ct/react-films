@@ -7,6 +7,7 @@ import {GlitchProvider} from "./components/context/glitch/GlitchContext";
 import SearchPage from "./components/pages/SearchPage";
 import Footer from "./components/layout/Footer";
 import NotFound from "./components/pages/NotFound";
+import About from "./components/pages/About";
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
                                 <Routes>
                                     <Route path="/" element={<Home/>}/>
                                     <Route path="/search/:text" element={<SearchPage/>}/>
+                                    <Route path="/about" element={<About/>}/>
                                     <Route path="/notfound" element={<NotFound/>}/>
                                     <Route path="/*" element={<NotFound/>}/>
                                 </Routes>
