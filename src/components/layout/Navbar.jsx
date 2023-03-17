@@ -27,7 +27,7 @@ const Navbar = () => {
                                 </Link>
                             </li>
                             <li>
-                                <Link to="/">
+                                <Link to="/about">
                                     {/*<FaAddressCard/>*/}
                                     <svg
                                         viewBox="0 0 1024 1024"
