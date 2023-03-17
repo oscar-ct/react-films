@@ -3,6 +3,7 @@ import emailjs from '@emailjs/browser';
 import img from "../images/portfolio-headshot.jpg"
 import {FiMail, FiGithub, FiUser} from "react-icons/fi"
 import Alert from "../layout/assets/Alert";
+import {AnimatePresence} from "framer-motion";
 
 const EMAILJS_SERVICE = process.env.REACT_APP_SERVICE_ID
 const EMAILJS_TEMPLATE = process.env.REACT_APP_TEMPLATE_ID
@@ -51,7 +52,7 @@ const About = () => {
 
         <div className="flex justify-center items-center bg-black">
             <form id="email-form" onSubmit={sendEmail} ref={form}/>
-            <div className="container mx-auto my-4 px-4 lg:px-20 bg-black">
+            <div className="container mx-auto my-4 px-4 lg:px-20 xl:px-40 bg-black">
                 <div className="bg-base-100/90 mt-10 w-full p-8 my-4 md:px-12 lg:w-9/12 lg:pl-20 lg:pr-40 mr-auto rounded-2xl shadow-2xl">
                     <div className="flex">
                         <h1 className="font-bold text-5xl whitespace-normal">Send Me A Message</h1>
@@ -64,24 +65,24 @@ const About = () => {
                             id="email" className="w-full bg-gray-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
                             type="email" placeholder="Email" form="email-form" name="email_id"/>
                     </div>
-                    <div className="my-4">
+                    <div className="mt-4 mb-6">
                         <textarea id="message" name="message" form="email-form" placeholder="Message*"
     className="w-full h-32 bg-gray-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline" onChange={handleMessage}/>
                         {alertDisplay &&
                         <div className="text-rose-500">Message must be at least 5 characters</div>}
                     </div>
-                    <div className="my-2 w-1/2 lg:w-1/2 xl:w-1/4">
+                    <div className="my-1 w-1/2 lg:w-1/2 xl:w-1/4">
                         <button disabled={btnDisabled} className="uppercase text-sm font-bold tracking-wide btn bg-primary text-white p-3 rounded-lg w-full
                       focus:outline-none focus:shadow-outline" type="submit" form="email-form">
                             Send Message
                         </button>
 
                     </div>
-
+                    <AnimatePresence>
                     {isAlerting &&
-                        <Alert/>
+                        <Alert alertType={"success"}/>
                     }
-
+                    </AnimatePresence>
                 </div>
 
 
