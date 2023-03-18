@@ -7,7 +7,7 @@ const Footer = () => {
 
                 <div>
                     <div className="text-white text-sm mt-3 mb-5">
-                        <div>Created by Oscar Castro w/</div>
+                        <div>Created by Oscar Castro</div>
                     </div>
                     {/*<div className="grid grid-flow-col gap-4 text-white">*/}
                     <div className="flex flex-wrap justify-center text-white">

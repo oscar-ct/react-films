@@ -1,11 +1,9 @@
 import {Link, useParams} from "react-router-dom";
 
 
-
 const FilmNoResults = () => {
 
     const params = useParams();
-
     return (
         <div className="no-results text-white w-full flex justify-center items-start">
             <div className="text-center hero-content">

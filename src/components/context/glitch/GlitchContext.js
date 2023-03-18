@@ -13,7 +13,6 @@ export const GlitchProvider = ( {children} ) => {
         isLoading: false,
         modalId: null,
         isUpdating: false,
-        isAlerting: false,
     }
 
     const [state, dispatch] = useReducer(glitchReducer, initialState);
@@ -25,7 +24,6 @@ export const GlitchProvider = ( {children} ) => {
             isLoading: state.isLoading,
             modalId: state.modalId,
             isUpdating: state.isUpdating,
-            isAlerting: state.isAlerting,
         }}>
         {children}
     </GlitchContext.Provider>

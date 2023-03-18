@@ -8,6 +8,7 @@ import SearchPage from "./components/pages/SearchPage";
 import Footer from "./components/layout/Footer";
 import NotFound from "./components/pages/NotFound";
 import About from "./components/pages/About";
+import FilmNoResults from "./components/omdb-films/FilmNoResults";
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
                                     <Route path="/" element={<Home/>}/>
                                     <Route path="/search/:text" element={<SearchPage/>}/>
                                     <Route path="/about" element={<About/>}/>
+                                    <Route path="/failed/:text" element={<FilmNoResults/>}/>
                                     <Route path="/notfound" element={<NotFound/>}/>
                                     <Route path="/*" element={<NotFound/>}/>
                                 </Routes>

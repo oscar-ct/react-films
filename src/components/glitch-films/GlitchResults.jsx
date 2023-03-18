@@ -19,14 +19,17 @@ const GlitchResults = () => {
             dispatch({
                 type: "SET_LOADING"
             });
+            console.log("loading glitch")
             const data = await getGlitchFilms();
             dispatch({
                 type: "GET_GLITCH_FILMS",
                 payload: data,
             });
         }
-        handleFetch();
-    }, [dispatch]);
+        if (glitchFilms.length === 0) {
+            handleFetch();
+        }
+    }, [dispatch, glitchFilms.length]);
 
 
 

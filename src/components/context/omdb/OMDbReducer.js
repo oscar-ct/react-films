@@ -1,20 +1,15 @@
 
 function omdbReducer (state, action) {
     switch (action.type) {
-        case "SET_NO_SEARCH_FOUND":
-            return {
-                ...state,
-                noSearchFound: false,
-            }
         case "SET_SEARCH_FOUND":
             return {
                 ...state,
-                noSearchFound: true,
+                noSearchFound: action.payload,
             }
         case "SET_LOADING":
             return {
                 ...state,
-                isLoading: true,
+                isLoading: action.payload,
             }
         case "GET_FILMS":
             return {
@@ -32,6 +27,16 @@ function omdbReducer (state, action) {
             return {
                 ...state,
                 modalId: action.payload,
+            }
+        case "SET_ALERTING":
+            return {
+                ...state,
+                isAlerting: action.payload,
+            }
+        case "SET_SEARCH_STRING":
+            return {
+                ...state,
+                searchString: action.payload,
             }
         default:
             return state;

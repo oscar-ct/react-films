@@ -2,8 +2,9 @@ import {Link} from "react-router-dom";
 import FilmSearch from "../omdb-films/FilmSearch";
 import {AnimatePresence, motion} from "framer-motion";
 import {useContext, useState} from "react";
-import glitchContext from "../context/glitch/GlitchContext";
 import Alert from "./assets/Alert";
+import OMDbContext from "../context/omdb/OMDbContext";
+import icon from "./assets/movie-icon-15142.png";
 
 
 
@@ -11,21 +12,23 @@ import Alert from "./assets/Alert";
 const Navbar = () => {
 
     const [alert, setAlert] = useState(true);
-    const { isAlerting, dispatch } = useContext(glitchContext);
+    const [alertMessage, setAlertMessage] = useState(false)
+    const { isAlerting, dispatch } = useContext(OMDbContext);
 
     const handleClick = () => {
-
-        dispatch({
-            type: "SET_ALERTING",
-            payload: true
-        });
+        setAlertMessage(true)
+        // dispatch({
+        //     type: "SET_ALERTING",
+        //     payload: true
+        // });
         setTimeout(function () {
+            setAlertMessage(false);
             setAlert(false);
-            dispatch({
-               type: "SET_ALERTING",
-               payload: false
-            });
-        }, 4000)
+            // dispatch({
+            //    type: "SET_ALERTING",
+            //    payload: false
+            // });
+        }, 4000);
     }
 
     return (
@@ -115,7 +118,7 @@ const Navbar = () => {
                         <button className="btn btn-ghost normal-case text-black sm:text-3xl sm:text-white font-light">
                             <motion.div className="flex nav-logo-wrapper" initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}}>
                                 <span className="px-2">M</span>
-                                <img className="nav-logo" src="https://www.freeiconspng.com/uploads/movie-icon-11.png" width="70" alt="" />
+                                <img className="nav-logo" src={icon} width="70" alt="O" />
                                 <span className="px-2">V</span>
                                 <span className="px-2">I</span>
                                 <span className="px-2">E</span>
@@ -136,12 +139,19 @@ const Navbar = () => {
 
             </div>
             <AnimatePresence>
-            {isAlerting && alert &&
+            {alertMessage && alert &&
             <div className="lg:flex lg:justify-end">
                 <div className="lg:w-1/2">
                     <Alert alertType="standard"/>
                 </div>
             </div>}
+            {isAlerting &&
+            <div className="md:flex md:justify-end">
+                <div className="lg:w-1/4 md:w-1/2">
+                    <Alert alertType="warning"/>
+                </div>
+            </div>}
+
             </AnimatePresence>
         </>
     );

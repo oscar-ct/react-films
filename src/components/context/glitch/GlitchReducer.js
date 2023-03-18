@@ -23,11 +23,6 @@ function glitchReducer (state, action) {
                 ...state,
                 modalId: action.payload,
             }
-        case "SET_ALERTING":
-            return {
-                ...state,
-                isAlerting: action.payload,
-            }
         default:
             return state;
 

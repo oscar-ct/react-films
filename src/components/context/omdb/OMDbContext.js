@@ -14,7 +14,9 @@ export const OMDbProvider = ( {children} ) => {
         isLoading: false,
         modalId: null,
         film: [],
-        noSearchFound: true
+        noSearchFound: true,
+        isAlerting: false,
+        searchString: "",
     }
 
     const [state, dispatch] = useReducer(omdbReducer, initialState);
@@ -27,7 +29,9 @@ export const OMDbProvider = ( {children} ) => {
             isLoading: state.isLoading,
             modalId: state.modalId,
             film: state.film,
-            noSearchFound: state.noSearchFound
+            noSearchFound: state.noSearchFound,
+            isAlerting: state.isAlerting,
+            searchString: state.searchString,
         }}>
         {children}
     </OMDbContext.Provider>
