@@ -15,7 +15,7 @@ const Modal = ( { modalId, film, isLoading } ) => {
     if (!isLoading && modalId != null) {
 
         // This data is from glitch or omdb
-        const { Title, Plot, Rating, Year, Genre, Director, imdbID} = film;
+        const { Title, Plot, Rating, Year, Genre, Director, Actors, imdbID} = film;
 
         return (
             <div>
@@ -29,7 +29,7 @@ const Modal = ( { modalId, film, isLoading } ) => {
 {/*                            <ModalIcons modalIdObj={modalFilmObj}/>*/}
 
                             <div className="modal-action my-0 py-0">
-                                <label htmlFor={`my-modal-${modalId}`} className="btn">Close</label>
+                                <label htmlFor={`my-modal-${modalId}`} className="btn btn-error text-white">Close</label>
                             </div>
 
                         </div>
@@ -37,24 +37,27 @@ const Modal = ( { modalId, film, isLoading } ) => {
                         <div className="flex justify-center">
                             <div className="stats stats-vertical lg:stats-horizontal shadow mt-6 bg-base-100/90">
                                 <div className="stat">
-                                    <div className="stat-title">Rotten Tomatoes Rating</div>
-                                    <div className="stat-value text-xl md:text-3xl font-bold">{!film.hasOwnProperty("Ratings")  ? Rating : film.hasOwnProperty("Ratings") && film.Ratings.length !== 0 ? film.Ratings[0].Value : "N/A"}</div>
+                                    <div className="stat-title">Rating</div>
+                                    <div className="stat-value text-xl md:text-2xl font-bold">{!film.hasOwnProperty("Ratings")  ? Rating : film.hasOwnProperty("Ratings") && film.Ratings.length !== 0 ? film.Ratings[0].Value : "N/A"}</div>
                                 </div>
                                 <div className="stat">
                                     <div className="stat-title">Year</div>
-                                    <div className="stat-value text-xl md:text-3xl font-bold">{Year}</div>
-                                </div>
-                                <div className="stat">
-                                    <div className="stat-title">Director</div>
-                                    <div className="stat-value text-xl md:text-3xl font-bold">{Director}</div>
+                                    <div className="stat-value text-xl md:text-2xl font-bold">{Year}</div>
                                 </div>
                                 <div className="stat">
                                     <div className="stat-title">Genre</div>
-                                    <div className="stat-value text-xl md:text-3xl font-bold">{Genre}</div>
+                                    <div className=" text-xl md:text-2xl font-bold keep-all">{Genre}</div>
+                                </div>
+                                <div className="stat">
+                                    <div className="stat-title">Actors</div>
+                                    <div className="text-xl md:text-2xl font-bold keep-all">{Actors}</div>
+                                </div>
+                                <div className="stat">
+                                    <div className="stat-title">Director</div>
+                                    <div className="stat-value text-xl md:text-2xl font-bold">{Director}</div>
                                 </div>
                             </div>
                         </div>
-
                         <div className="flex justify-end">
                             {isUpdating &&
                                 <div className="flex items-end">
