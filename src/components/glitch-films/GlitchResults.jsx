@@ -74,7 +74,7 @@ const GlitchResults = () => {
             return (
                 <>
                     <div>
-                        <div className="mt-6 mb-1">
+                        <div className="mt-1 mb-1">
                             <h1 className="text-2xl text-white">WatchList ({watchlist.length})</h1>
                         </div>
                         <Slider {...settings}>

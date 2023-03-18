@@ -13,7 +13,7 @@ const Navbar = () => {
 
     const [alert, setAlert] = useState(true);
     const [alertMessage, setAlertMessage] = useState(false)
-    const { isAlerting, dispatch } = useContext(OMDbContext);
+    const { isAlerting  } = useContext(OMDbContext);
 
     const handleClick = () => {
         setAlertMessage(true)
@@ -33,7 +33,7 @@ const Navbar = () => {
 
     return (
         <>
-            <div className="navbar bg-neutral text-neutral-content py-5">
+            <div className="navbar bg-neutral/20 text-neutral-content py-6">
                 <div className="navbar-start">
                     <div className="dropdown dropdown-hover">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">

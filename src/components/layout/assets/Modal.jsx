@@ -15,14 +15,15 @@ const Modal = ( { modalId, film, isLoading } ) => {
     if (!isLoading && modalId != null) {
 
         // This data is from glitch or omdb
-        const { Title, Plot, Rating, Year, Genre, Director, Actors, imdbID} = film;
+        const { Title, Plot, Rating, Year, Genre, Director, Actors, imdbID, Poster} = film;
 
         return (
             <div>
                 <input type="checkbox" id={`my-modal-${modalId}`} className="modal-toggle" />
                 <div className="modal">
-                    <div className="modal-box w-11/12 max-w-5xl bg-transparent/80 text-white">
-
+                    {/* eslint-disable-next-line react/style-prop-object */}
+                    <div className="modal-box w-11/12 max-w-5xl text-white bg-black/90" >
+                        <div id="modalBg" style={{backgroundImage: `url(${Poster})`}}/>
                         <div className="flex flex-row justify-between items-start">
                             <div className="font-bold text-2xl md:text-3xl pb-5">{Title}</div>
 {/*/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/}
@@ -79,7 +80,6 @@ const Modal = ( { modalId, film, isLoading } ) => {
                             </div>
 
                         </div>
-
 
                     </div>
                 </div>
