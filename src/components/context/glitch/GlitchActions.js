@@ -34,9 +34,10 @@ export const deleteGlitchFilm = async (id) => {
 export const addGlitchFilm = async (id, Favorite, WatchList) => {
     const data = await filmData(id);
     const { Title, Poster, Year, Genre, Director, Plot, Actors, imdbID } = data;
+    const ratingData = (data) => data.Ratings.length !== 0 ? data.Ratings[0].Value : "N/A";
     const new_object = {
         Title,
-        Rating: data.Ratings[0].Value,
+        Rating: ratingData(data),
         Poster,
         Year,
         Genre,

@@ -38,7 +38,7 @@ const Modal = ( { modalId, film, isLoading } ) => {
                             <div className="stats stats-vertical lg:stats-horizontal shadow mt-6 bg-base-100/90">
                                 <div className="stat">
                                     <div className="stat-title">Rotten Tomatoes Rating</div>
-                                    <div className="stat-value text-xl md:text-3xl font-bold">{!film.hasOwnProperty("Ratings")  ? Rating : film.Ratings[0].Value}</div>
+                                    <div className="stat-value text-xl md:text-3xl font-bold">{!film.hasOwnProperty("Ratings")  ? Rating : film.hasOwnProperty("Ratings") && film.Ratings.length !== 0 ? film.Ratings[0].Value : "N/A"}</div>
                                 </div>
                                 <div className="stat">
                                     <div className="stat-title">Year</div>

@@ -1,6 +1,6 @@
 import {useContext} from "react";
 import OMDbContext from "../context/omdb/OMDbContext";
-import {filmSearch} from "../context/omdb/OMDbActions";
+import {filmSearch, filterSearchData} from "../context/omdb/OMDbActions";
 import { useNavigate } from "react-router-dom";
 
 
@@ -39,17 +39,19 @@ const FilmSearch = () => {
                 });
             }, 2000);
         } else {
-
             dispatch({
                 type: "SET_LOADING",
                 payload: true
             });
             const data = await filmSearch(searchString)
-            console.log(data.Response)
+
             if (data.Response === "True") {
+                const filteredData = filterSearchData(data.Search);
+                console.log(data.Search);
+                console.log(filteredData);
                 dispatch({
                     type: "GET_FILMS",
-                    payload: data.Search,
+                    payload: filteredData,
                 });
                 dispatch({
                     type: "SET_SEARCH_FOUND",

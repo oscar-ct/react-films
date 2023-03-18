@@ -1,7 +1,7 @@
 import {useParams} from "react-router-dom";
 import {useContext, useEffect} from "react";
 import OMDbContext from "../context/omdb/OMDbContext";
-import {filmSearch} from "../context/omdb/OMDbActions";
+import {filmSearch, filterSearchData} from "../context/omdb/OMDbActions";
 import {AnimatePresence, motion} from "framer-motion";
 import FilmItem from "../omdb-films/FilmItem";
 import LargeSpinner from "../layout/LargeSpinner";
@@ -25,9 +25,10 @@ const SearchResults = () => {
             const data = await filmSearch(text)
             console.log(data.Response)
             if (data.Response === "True") {
+                const filteredData = filterSearchData(data.Search);
                 dispatch({
                     type: "GET_FILMS",
-                    payload: data.Search,
+                    payload: filteredData,
                 });
                 dispatch({
                     type: "SET_SEARCH_FOUND",

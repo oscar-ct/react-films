@@ -26,4 +26,10 @@ export const filmData = async (text) => {
     return data;
 }
 
+export const filterSearchData = (array) => {
+    return array.filter(function (obj) {
+        return obj.Poster !== "N/A";
+    });
+}
+
 

@@ -13,12 +13,13 @@ const FilmItem = ( {film: { Poster, imdbID }} ) => {
         dispatch({
             type: "OPEN_OMDB_FILM",
             payload: imdbID
-        })
+        });
         const data = await filmData(`${imdbID}`);
+        console.log(data)
         dispatch({
             type: "GET_FILM",
             payload: data,
-        })
+        });
 
     }
 
