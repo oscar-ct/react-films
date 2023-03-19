@@ -12,7 +12,15 @@ const FilmSearch = () => {
     const navigateToSearchPage = () => {
         navigate(`/search/${searchString}`)
     }
-    const navigateToSearchable = () => {
+    const setStateAndNavigateToFailedSearch = () => {
+        dispatch({
+            type: "SET_SEARCH_FOUND",
+            payload: false
+        });
+        dispatch({
+            type: "SET_LOADING",
+            payload: false,
+        })
         navigate(`/failed/${searchString}`)
     }
 
@@ -25,7 +33,6 @@ const FilmSearch = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
         if (searchString.trim() === "") {
             console.log("THIS IS BLANK")
             dispatch({
@@ -47,27 +54,21 @@ const FilmSearch = () => {
 
             if (data.Response === "True") {
                 const filteredData = filterSearchData(data.Search);
-                console.log(data.Search);
-                console.log(filteredData);
-                dispatch({
-                    type: "GET_FILMS",
-                    payload: filteredData,
-                });
-                dispatch({
-                    type: "SET_SEARCH_FOUND",
-                    payload: true,
-                });
-                navigateToSearchPage();
+                if (filteredData.length !== 0) {
+                    dispatch({
+                        type: "GET_FILMS",
+                        payload: filteredData,
+                    });
+                    dispatch({
+                        type: "SET_SEARCH_FOUND",
+                        payload: true,
+                    });
+                    navigateToSearchPage();
+                } else {
+                    setStateAndNavigateToFailedSearch();
+                }
             } else {
-                dispatch({
-                    type: "SET_SEARCH_FOUND",
-                    payload: false
-                });
-                dispatch({
-                    type: "SET_LOADING",
-                    payload: false,
-                })
-                navigateToSearchable()
+                setStateAndNavigateToFailedSearch();
             }
         }
     }
