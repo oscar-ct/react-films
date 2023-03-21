@@ -1,4 +1,4 @@
-import {useContext} from "react";
+import { useContext, useRef } from "react";
 import OMDbContext from "../context/omdb/OMDbContext";
 import {filmSearch, filterSearchData} from "../context/omdb/OMDbActions";
 import { useNavigate } from "react-router-dom";
@@ -6,11 +6,14 @@ import { useNavigate } from "react-router-dom";
 
 const FilmSearch = () => {
 
-    const { dispatch, searchString } = useContext(OMDbContext);
+    const { dispatch } = useContext(OMDbContext);
     const navigate = useNavigate();
 
+    const searchString = useRef("");
+
+
     const navigateToSearchPage = () => {
-        navigate(`/search/${searchString}`)
+        navigate(`/search/${searchString.current.value}`)
     }
     const setStateAndNavigateToFailedSearch = () => {
         dispatch({
@@ -21,19 +24,21 @@ const FilmSearch = () => {
             type: "SET_LOADING",
             payload: false,
         })
-        navigate(`/failed/${searchString}`)
+        navigate(`/failed/${searchString.current.value}`)
     }
 
-    const handleChange = (e) => {
-        dispatch({
-            type: "SET_SEARCH_STRING",
-            payload: e.target.value
-        });
-    }
+    // const handleChange = (e) => {
+        // console.log(searchString)
+        // console.log(searchString.current.value)
+        // dispatch({
+        //     type: "SET_SEARCH_STRING",
+        //     payload: e.target.value
+        // });
+    // }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (searchString.trim() === "") {
+        if (searchString.current.value.trim() === "") {
             console.log("THIS IS BLANK")
             dispatch({
                 type: "SET_ALERTING",
@@ -50,7 +55,7 @@ const FilmSearch = () => {
                 type: "SET_LOADING",
                 payload: true
             });
-            const data = await filmSearch(searchString)
+            const data = await filmSearch(searchString.current.value)
 
             if (data.Response === "True") {
                 const filteredData = filterSearchData(data.Search);
@@ -81,8 +86,9 @@ const FilmSearch = () => {
                     type="text"
                     placeholder="Search Titles"
                     className="input input-bordered rounded border-0 w-75 text-white bg-gradient-to-r from-black to-neutral text-md"
-                    onChange={handleChange}
-                    value={searchString}
+                    // onChange={handleChange}
+                    // value={searchString}
+                    ref={searchString}
                 />
             </div>
             {/*<Link className="text-base-content text-opacity-40" to={`/search/${text}`}>*/}
